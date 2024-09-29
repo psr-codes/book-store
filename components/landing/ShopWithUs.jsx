@@ -2,7 +2,7 @@ import React from "react";
 import { Truck, BadgeIndianRupee, BadgePercent } from "lucide-react";
 const ShopWithUs = () => {
     return (
-        <section className="w-full bg-[#F9E9DA]">
+        <section className="w-full bg-[#F9E9DA] my-10">
             <div className="  inset-0 z-10 pointer-events-none transform rotate-y-180">
                 <svg
                     xmlns="http://www.w3.org/2000/svg"

@@ -12,7 +12,7 @@ const categories = [
 
 const Categories = () => {
     return (
-        <div className="relative w-full ">
+        <div className="relative w-full  my-10">
             <div className=" w-[100vw]  custom-shape-divider-top-1727592207 bg-[#F9E9DA]">
                 <svg
                     data-name="Layer 1"
@@ -27,11 +27,8 @@ const Categories = () => {
                 </svg>
             </div>
 
-            <div className="text-center pt-[50px] py-[50px] md:px-40  bg-[#F9E9DA] ">
-                <h2 className="text-4xl font-semibold text-gray-700 mb-8">
-                    Explore Our Categories
-                </h2>
-                <h2 className="text-4xl font-semibold text-gray-700 mb-8">
+            <div className="text-center pt-[50px] py-[50px]   md:px-40  bg-[#F9E9DA] ">
+                <h2 className="text-4xl font-semibold text-gray-700 my-16">
                     Explore Our Categories
                 </h2>
                 <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-6">

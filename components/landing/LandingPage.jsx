@@ -2,6 +2,9 @@
 import ShopBySubjects from "./ShopBySubject";
 import Categories from "./Categories";
 import ShopWithUs from "./ShopWithUs";
+import Tabs from "@/components/landing/Tabs";
+import Testimonials from "./Testimonials";
+
 import React from "react";
 
 const Home = () => {
@@ -10,7 +13,9 @@ const Home = () => {
             <ShopBySubjects />
 
             <Categories />
+            <Tabs />
             <ShopWithUs />
+            <Testimonials />
         </section>
     );
 };
