@@ -12,8 +12,11 @@ const Header = () => {
     return (
         <div>
             <TopbarStrip />
-            <Topbar />
-            {isLoaded && <Navbar />}
+            <div className="px-20">
+                {" "}
+                <Topbar />
+                {isLoaded && <Navbar />}
+            </div>
         </div>
     );
 };

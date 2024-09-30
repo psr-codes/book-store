@@ -17,13 +17,13 @@ const Navbar = () => {
 
     return (
         <nav
-            className={`sticky top-0 bg-white dark::bg-gray-900 ${
+            className={`sticky top-0   dark::bg-gray-900 ${
                 pathname === "/checkout" && "hidden"
             } ${
                 pathname === "/Admin" && "hidden"
-            } w-full top-0 start-0 border-b border-gray-200 dark::border-gray-600 z-50`}
+            } w-full top-0 start-0 p-2  z-50`}
         >
-            <div className="flex flex-wrap items-center justify-between mx-4 p-4">
+            <div className="flex flex-wrap items-center justify-between mx-4 p-1">
                 {/* Mobile */}
                 <Mobile mobileMenu={mobileMenu} setMobileMenu={setMobileMenu} />
                 {/* Desktop */}
@@ -46,7 +46,7 @@ const CollapsibleNavLink = ({ title, children }) => {
     };
 
     return (
-        <li className="relative">
+        <div className="relative">
             <button
                 className="flex items-center justify-between py-2 px-4 w-full bg-gray-100 -md hover:bg-gray-300 transition-colors"
                 onClick={toggleSubmenu}
@@ -59,14 +59,14 @@ const CollapsibleNavLink = ({ title, children }) => {
                     }`}
                 />
             </button>
-            <ul
+            <div
                 className={`nav-submenu pl-6 pt-2 space-y-1 ${
                     isOpen ? "block" : "hidden"
                 }`}
             >
                 {children}
-            </ul>
-        </li>
+            </div>
+        </div>
     );
 };
 
@@ -87,7 +87,7 @@ const Mobile = ({ mobileMenu, setMobileMenu }) => {
         <div className="flex md:order-2 space-x-3 md:space-x-0 rtl:space-x-reverse">
             {mobileMenu && (
                 <section
-                    className="absolute top-0 right-0   min-w-[100%] h-full p-2 border-[1px]   border-gray-200 bg-red-500 "
+                    className="absolute top-0 right-0   min-w-[100%] h-full p-2   bg-red-500 "
                     id="mobileMenuContent"
                 >
                     <button
@@ -226,7 +226,7 @@ const Desktop = () => {
                 className="flex items-center justify-between w-full md:flex md:w-auto md:order-1"
                 id="navbar-sticky"
             >
-                <li className="relative hover:bg-gray-100 py-4">
+                <li className="relative hover:bg-gray-100 py-1">
                     <Link
                         href="/"
                         className={`block  px-3    ${
@@ -243,7 +243,7 @@ const Desktop = () => {
                 {Object.keys(navbar).map((menu) => (
                     <li
                         key={menu}
-                        className="relative hover:bg-gray-100 py-4"
+                        className="relative hover:bg-gray-100 py-1"
                         onMouseEnter={() => handleMouseEnter(menu)}
                         onMouseLeave={() => handleMouseLeave(menu)}
                     >
@@ -282,7 +282,7 @@ const Desktop = () => {
                         </Link>
                         {showSubmenu[menu] && (
                             <ul
-                                className={`w-max absolute left-0 py-2 top-14 shadow-xl z-20 border-[1px] bg-white border-gray-200 grid ${
+                                className={`w-max absolute left-0 py-2 top-14   z-20   bg-white   grid ${
                                     menu === "Chardham Yatra"
                                         ? "grid-cols-1"
                                         : "grid-cols-2"
@@ -351,7 +351,7 @@ const BestTimeToVisit = () => {
                     View All »
                 </a>
             </div>
-            <div className="p-4">
+            <div className="p-1">
                 <h2 className="text-xl font-bold mb-4">By Month</h2>
                 <ul className="mb-4">
                     <li className="flex items-center">

@@ -4,7 +4,7 @@ import { ChevronDown, Heart, Logs, ShoppingBag, Search } from "lucide-react";
 const Topbar = () => {
     const [searchValue, setSearchValue] = useState("");
     return (
-        <header className="flex items-center justify-between p-4 bg-white shadow">
+        <header className="flex items-center justify-between p-2 bg-white  ">
             {/* Logo */}
             <div className="flex  justify-between items-center  ">
                 <Image
@@ -26,7 +26,7 @@ const Topbar = () => {
             </div>
 
             {/* Search Bar */}
-            <div className="flex items-center border border-gray-300 rounded-full w-1/2">
+            <div className="flex items-center  rounded-full w-1/2">
                 <button className="pl-4 pr-2 py-2 text-gray-600">ALL</button>
                 <ChevronDown className="text-gray-700" />
 
