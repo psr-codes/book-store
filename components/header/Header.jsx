@@ -13,7 +13,6 @@ const Header = () => {
         <div>
             <TopbarStrip />
             <div className="px-20">
-                {" "}
                 <Topbar />
                 {isLoaded && <Navbar />}
             </div>
