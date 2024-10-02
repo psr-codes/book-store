@@ -16,9 +16,9 @@ const Topbar = () => {
                 />
                 <div className="flex flex-col   justify-center items-center">
                     <span className="ml-1   text-orange-500  text-4xl tracking-wide font-semibold mx-2 ">
-                        Exotic India
+                        Adi Prabha
                     </span>
-                    <span className=" w-fit  text-xs tracking-wider  text-orange-400   flex justify-start gap-1">
+                    <span className=" w-fit  text-xs tracking-wider  text-orange-400   flex justify-start gap-1 mr-1">
                         <span>AUTHENTIC</span>
                         <span>CURATED</span>
                         <span>HERITAGE</span>
