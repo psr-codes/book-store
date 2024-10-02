@@ -2,12 +2,18 @@ import React from "react";
 import "./Categories.css";
 
 const categories = [
-    { name: "HINDU STATUES", image: "/path/to/image1.jpg" },
-    { name: "HINDU BOOKS", image: "/path/to/image2.jpg" },
-    { name: "HINDI BOOKS", image: "/path/to/image3.jpg" },
-    { name: "REGIONAL LANGUAGES", image: "/path/to/image4.jpg" },
-    { name: "HOME DECOR", image: "/path/to/image5.jpg" },
-    { name: "BRASS STATUES", image: "/path/to/image6.jpg" },
+    { name: "STATUES", image: "/images/categories/sculptures-002.webp" },
+    {
+        name: "HOME & LIVING",
+        image: "/images/categories/homeandliving-001.jpg",
+    },
+    { name: "BOOKS", image: "/images/categories/book-001.jpg" },
+    {
+        name: "CLOTHING & MORE",
+        image: "/images/categories/textiles-001.webp",
+    },
+    { name: "PAINTINGS", image: "/images/categories/paintings-001.webp" },
+    { name: "JEWELRY", image: "/images/categories/jewelry-001.jpg" },
 ];
 
 const Categories = () => {

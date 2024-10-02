@@ -92,30 +92,32 @@ const CuratedItems = () => {
             </div>
 
             {/* Carousel for Active Tab */}
-            <div className="carousel">
+            <div className="carousel ">
                 <Slider {...settings}>
-                    {tabData[activeTab]?.map((item) => (
-                        <div key={item.id} className="carousel-item p-4">
-                            <div className="bg-white rounded-lg shadow-md p-4">
+                    {tabData[activeTab]?.map((item, index) => (
+                        <div key={index} className="carousel-item    mt-5  ">
+                            <div className="bg-white rounded-lg   p-4 w-[21rem] mx-auto border border-red-500  ">
+                                {" "}
+                                {/* Adjusted the width to create a portrait layout */}
                                 <img
-                                    src={item.img}
-                                    alt={item.name}
-                                    className="w-full h-56 object-cover rounded-md mb-4"
+                                    src={item.images[0]}
+                                    alt={item.images[0]}
+                                    className="w-full h-96 object-cover rounded-md mb-4"
                                 />
-                                <h3 className="text-lg font-semibold">
-                                    {item.name}
+                                <h3 className="text-[1rem] leading-5 ">
+                                    {item.title}
                                 </h3>
-                                <p className="text-sm mt-2">
-                                    Price:{" "}
-                                    <span className="font-medium">
+                                <p className="text-sm mt-2 ">
+                                    MRP:{" "}
+                                    <span className="font-medium mx-2">
                                         Rs.{item.price}
                                     </span>
+                                    {item.discountPrice && (
+                                        <span className="text-red-500 text-sm mt-1 line-through">
+                                            {item.discountPrice}
+                                        </span>
+                                    )}
                                 </p>
-                                {item.discount && (
-                                    <span className="text-red-500 text-sm mt-1">
-                                        {item.discount} off
-                                    </span>
-                                )}
                             </div>
                         </div>
                     ))}

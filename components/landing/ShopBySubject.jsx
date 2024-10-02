@@ -1,30 +1,68 @@
 import React, { useState } from "react";
 
 const categories = [
-    { name: "HINDU STATUES", image: "/path/to/image1.jpg" },
-    { name: "HINDU BOOKS", image: "/path/to/image2.jpg" },
-    { name: "HINDI BOOKS", image: "/path/to/image3.jpg" },
-    { name: "REGIONAL LANGUAGES", image: "/path/to/image4.jpg" },
-    { name: "HOME DECOR", image: "/path/to/image5.jpg" },
-    { name: "BRASS STATUES", image: "/path/to/image6.jpg" },
-    { name: "SMALL STATUES", image: "/path/to/image7.jpg" },
-    { name: "SHAWLS & SCARVES", image: "/path/to/image8.jpg" },
-    { name: "BOOKS ON AYURVEDA", image: "/path/to/image9.jpg" },
-    { name: "TANJORE PAINTINGS", image: "/path/to/image10.jpg" },
-    { name: "SANSKRIT BOOKS", image: "/path/to/image11.jpg" },
-    { name: "HISTORY BOOKS", image: "/path/to/image12.jpg" },
-    { name: "HINDU STATUES", image: "/path/to/image1.jpg" },
-    { name: "HINDU BOOKS", image: "/path/to/image2.jpg" },
-    { name: "HINDI BOOKS", image: "/path/to/image3.jpg" },
-    { name: "REGIONAL LANGUAGES", image: "/path/to/image4.jpg" },
-    { name: "HOME DECOR", image: "/path/to/image5.jpg" },
-    { name: "BRASS STATUES", image: "/path/to/image6.jpg" },
-    { name: "SMALL STATUES", image: "/path/to/image7.jpg" },
-    { name: "SHAWLS & SCARVES", image: "/path/to/image8.jpg" },
-    { name: "BOOKS ON AYURVEDA", image: "/path/to/image9.jpg" },
-    { name: "TANJORE PAINTINGS", image: "/path/to/image10.jpg" },
-    { name: "SANSKRIT BOOKS", image: "/path/to/image11.jpg" },
-    { name: "HISTORY BOOKS", image: "/path/to/image12.jpg" },
+    { name: "HINDU BOOKS", image: "/images/shop-by-subjects/hindu-book.webp" },
+    { name: "HINDI BOOKS", image: "/images/shop-by-subjects/hindi-books.webp" },
+    { name: "SANSKRIT BOOKS", image: "/images/shop-by-subjects/sanskrit.webp" },
+
+    { name: "yoga BOOKS", image: "/images/shop-by-subjects/Yoga-books.webp" },
+    {
+        name: "HISTORY BOOKS",
+        image: "/images/shop-by-subjects/History-book.webp",
+    },
+    {
+        name: "AYURVEDA BOOKS",
+        image: "/images/shop-by-subjects/ayurveda-books.webp",
+    },
+    {
+        name: "Tantra BOOKS",
+        image: "/images/shop-by-subjects/Tantra-book.webp",
+    },
+    { name: "Thangka", image: "/images/shop-by-subjects/Thangka.webp" },
+    {
+        name: "HINDU STATUES",
+        image: "/images/shop-by-subjects/hindu-statues.webp",
+    },
+    {
+        name: "BRASS STATUES",
+        image: "/images/shop-by-subjects/brass-statue.webp",
+    },
+    {
+        name: "Small STATUES",
+        image: "/images/shop-by-subjects/Small-statue.webp",
+    },
+    {
+        name: "Stone STATUES",
+        image: "/images/shop-by-subjects/Stone-statue.webp",
+    },
+    { name: "HOME DECOR", image: "/images/shop-by-subjects/home-decor.webp" },
+    {
+        name: "SHAWLS AND SCARVES",
+        image: "/images/shop-by-subjects/stoles-and-shawls.webp",
+    },
+    {
+        name: "TANJORE PAINTINGS",
+        image: "/images/shop-by-subjects/tanjore-paintings.webp",
+    },
+    {
+        name: "BRASS RITUAL",
+        image: "/images/shop-by-subjects/brass-ritual.webp",
+    },
+    { name: "ASTROLOGY", image: "/images/shop-by-subjects/Astrology.webp" },
+    { name: "CLOTHING", image: "/images/shop-by-subjects/Kurta-pajama.webp" },
+    {
+        name: "LANGUAGES & Literature",
+        image: "/images/shop-by-subjects/Languages-Literature.webp",
+    },
+    { name: "Arts", image: "/images/shop-by-subjects/Performingarts.webp" },
+    {
+        name: "Puja & Temples",
+        image: "/images/shop-by-subjects/Puja-temples.webp",
+    },
+    {
+        name: "Regional Languages",
+        image: "/images/shop-by-subjects/Regional-languages.webp",
+    },
 ];
 
 const ShopBySubjects = () => {
@@ -46,14 +84,16 @@ const ShopBySubjects = () => {
             <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-6">
                 {categories.slice(0, visibleCount).map((category, index) => (
                     <div key={index} className="flex flex-col items-center">
-                        <div className="w-28 h-28 rounded-full overflow-hidden border-4 border-yellow-500 flex items-center justify-center mb-4">
+                        <div className="w-28 h-28 rounded-full overflow-hidden   flex items-center justify-center mb-4">
                             <img
                                 src={category.image}
                                 alt={category.name}
                                 className="w-full h-full object-cover"
                             />
                         </div>
-                        <h4 className="text-sm font-medium">{category.name}</h4>
+                        <h4 className="text-sm font-medium uppercase">
+                            {category.name}
+                        </h4>
                     </div>
                 ))}
             </div>

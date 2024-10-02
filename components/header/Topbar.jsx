@@ -15,18 +15,19 @@ const Topbar = () => {
                     alt=""
                 />
                 <div className="flex flex-col justify-center items-center">
-                    <span className="ml-1  text-orange-500  text-4xl tracking-widest  ">
+                    <span className="ml-1   text-orange-500  text-4xl tracking-wide font-semibold mx-2 ">
                         Exotic India
                     </span>
-                    <span className="ml-2 text-sm  text-gray-800">
-                        {" "}
-                        AUTHENTIC.CURATED.HERITAGE
+                    <span className=" w-fit  text-xs tracking-wider  text-orange-400   flex justify-start gap-1">
+                        <span>AUTHENTIC</span>
+                        <span>CURATED</span>
+                        <span>HERITAGE</span>
                     </span>
                 </div>
             </div>
 
             {/* Search Bar */}
-            <div className="flex items-center  rounded-full w-1/2">
+            <div className="flex items-center  rounded-full w-1/2 border-gray-500 border-[1px]">
                 <button className="pl-4 pr-2 py-2 text-gray-600">ALL</button>
                 <ChevronDown className="text-gray-700" />
 
