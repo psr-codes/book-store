@@ -77,7 +77,7 @@ const ShopBySubjects = () => {
     // };
 
     return (
-        <div className="text-center py-8 md:px-40 my-10">
+        <div className="text-center py-8 md:px-[12rem] my-10">
             <h2 className="text-4xl font-semibold text-gray-700 mb-8">
                 Shop by Subjects
             </h2>

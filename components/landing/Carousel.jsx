@@ -63,9 +63,18 @@ function LazyLoad() {
 function SampleNextArrow(props) {
     const { className, style, onClick } = props;
     return (
-        <div
+        <img
+            src="/arrow_right.png"
             className={className}
-            style={{ ...style, display: "block", background: "#B09534" }}
+            style={{
+                ...style,
+                display: "block",
+
+                background: "rgba(176, 149, 52, 0.3)", // Semi-transparent background
+                borderRadius: "50%",
+                width: "50px", // Change this to the size you want
+                height: "50px", // Change this to the size you want
+            }}
             onClick={onClick}
         />
     );
@@ -74,9 +83,18 @@ function SampleNextArrow(props) {
 function SamplePrevArrow(props) {
     const { className, style, onClick } = props;
     return (
-        <div
+        <img
+            src="/arrow_left.png"
             className={className}
-            style={{ ...style, display: "block", background: "#B09534" }}
+            style={{
+                ...style,
+                display: "block",
+                zIndex: "100",
+                background: "rgba(176, 149, 52, 0.3)", // Semi-transparent background
+                borderRadius: "50%",
+                width: "50px", // Change this to the size you want
+                height: "50px", // Change this to the size you want
+            }}
             onClick={onClick}
         />
     );

@@ -6,15 +6,21 @@ import "slick-carousel/slick/slick-theme.css";
 import { tabData } from "@/data/tabsData";
 const CuratedItems = () => {
     const [activeTab, setActiveTab] = useState("newArrivals");
-
+    const tabs = [
+        { id: "newArrivals", label: "New Arrivals" },
+        { id: "recentlySold", label: "Recently Sold" },
+        { id: "bestSellers", label: "Best Sellers" },
+        { id: "trending", label: "Trending" },
+        { id: "editorsPicks", label: "Editor's Picks" },
+    ];
     const settings = {
         dots: true,
         infinite: true,
         speed: 500,
         slidesToShow: 3,
         slidesToScroll: 1,
-        nextArrow: <CustomNextArrow className="text-black" />,
-        prevArrow: <CustomPrevArrow className="rounded-full" />,
+        nextArrow: <SampleNextArrow className="text-black" />,
+        prevArrow: <SamplePrevArrow className="rounded-full" />,
         arrows: true,
         responsive: [
             {
@@ -34,63 +40,35 @@ const CuratedItems = () => {
 
     return (
         <div className="p-5 max-w-7xl mx-auto py-10 my-10  ">
-            <h2 className="text-4xl font-semibold text-gray-700 mb-8 w-full text-center">
-                Discover Curated Items
-            </h2>
-            {/* Tab Navigation */}
-            <div className="flex justify-around mb-6 border-b">
-                <button
-                    onClick={() => setActiveTab("newArrivals")}
-                    className={`py-2 px-4 focus:outline-none ${
-                        activeTab === "newArrivals"
-                            ? "border-b-4 border-orange-500 font-semibold"
-                            : ""
-                    }`}
-                >
-                    New Arrivals
-                </button>
-                <button
-                    onClick={() => setActiveTab("recentlySold")}
-                    className={`py-2 px-4 focus:outline-none ${
-                        activeTab === "recentlySold"
-                            ? "border-b-4 border-orange-500 font-semibold"
-                            : ""
-                    }`}
-                >
-                    Recently Sold
-                </button>
-                <button
-                    onClick={() => setActiveTab("bestSellers")}
-                    className={`py-2 px-4 focus:outline-none ${
-                        activeTab === "bestSellers"
-                            ? "border-b-4 border-orange-500 font-semibold"
-                            : ""
-                    }`}
-                >
-                    Best Sellers
-                </button>
-                <button
-                    onClick={() => setActiveTab("trending")}
-                    className={`py-2 px-4 focus:outline-none ${
-                        activeTab === "trending"
-                            ? "border-b-4 border-orange-500 font-semibold"
-                            : ""
-                    }`}
-                >
-                    Trending
-                </button>
-                <button
-                    onClick={() => setActiveTab("editorsPicks")}
-                    className={`py-2 px-4 focus:outline-none ${
-                        activeTab === "editorsPicks"
-                            ? "border-b-4 border-orange-500 font-semibold"
-                            : ""
-                    }`}
-                >
-                    Editor's Picks
-                </button>
-            </div>
+            <div className="container mx-auto">
+                <h2 className="text-4xl font-semibold text-gray-700 mb-8 w-full text-center">
+                    Discover Curated Items
+                </h2>
+                <div className="relative">
+                    {/* Thin orange line spanning the entire width */}
+                    <div className="absolute -top-0 left-0 right-0 h-[5px] opacity-55 bg-orange-400 "></div>
 
+                    {/* Tab container */}
+                    <div className="flex justify-between relative">
+                        {tabs.map((tab) => (
+                            <button
+                                key={tab.id}
+                                onClick={() => setActiveTab(tab.id)}
+                                className={`
+                py-2 px-4 text-lg font-semibold focus:outline-none
+                ${
+                    activeTab === tab.id
+                        ? "text-orange-500 border-t-[10px]  border-orange-500 -mt-0.5"
+                        : "text-gray-600 hover:text-gray-800"
+                }
+              `}
+                            >
+                                {tab.label}
+                            </button>
+                        ))}
+                    </div>
+                </div>
+            </div>
             {/* Carousel for Active Tab */}
             <div className="carousel ">
                 <Slider {...settings}>
@@ -129,24 +107,42 @@ const CuratedItems = () => {
 
 export default CuratedItems;
 
-const CustomPrevArrow = (props) => {
+function SampleNextArrow(props) {
     const { className, style, onClick } = props;
     return (
-        <div
+        <img
+            src="/arrow_right.png"
             className={className}
-            style={{ ...style, display: "block", background: "black" }}
-            onClick={onClick}
-        />
-    );
-};
+            style={{
+                ...style,
+                display: "block",
 
-const CustomNextArrow = (props) => {
-    const { className, style, onClick } = props;
-    return (
-        <div
-            className={className}
-            style={{ ...style, display: "block", background: "black" }}
+                background: "rgba(176, 149, 52, 0.3)", // Semi-transparent background
+                borderRadius: "50%",
+                width: "50px", // Change this to the size you want
+                height: "50px", // Change this to the size you want
+            }}
             onClick={onClick}
         />
     );
-};
+}
+
+function SamplePrevArrow(props) {
+    const { className, style, onClick } = props;
+    return (
+        <img
+            src="/arrow_left.png"
+            className={className}
+            style={{
+                ...style,
+                display: "block",
+                zIndex: "100",
+                background: "rgba(176, 149, 52, 0.3)", // Semi-transparent background
+                borderRadius: "50%",
+                width: "50px", // Change this to the size you want
+                height: "50px", // Change this to the size you want
+            }}
+            onClick={onClick}
+        />
+    );
+}

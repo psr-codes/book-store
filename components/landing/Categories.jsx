@@ -33,14 +33,14 @@ const Categories = () => {
                 </svg>
             </div>
 
-            <div className="text-center pt-[50px] py-[50px]   md:px-40  bg-[#F9E9DA] ">
+            <div className="text-center pt-[50px] py-[50px]   md:px-[12rem]  bg-[#F9E9DA] ">
                 <h2 className="text-4xl font-semibold text-gray-700 my-16">
                     Explore Our Categories
                 </h2>
-                <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-6">
+                <div className="grid grid-cols-2    sm:grid-cols-3 lg:grid-cols-6 ">
                     {categories.map((category, index) => (
                         <div key={index} className="flex flex-col items-center">
-                            <div className="w-28 h-28 rounded-full overflow-hidden border-4 border-yellow-500 flex items-center justify-center mb-4">
+                            <div className="w-[10rem] h-[10rem] rounded-full overflow-hidden border-[7px] border-orange-500 flex items-center justify-center mb-4">
                                 <img
                                     src={category.image}
                                     alt={category.name}
