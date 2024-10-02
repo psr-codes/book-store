@@ -6,15 +6,15 @@ const Topbar = () => {
     return (
         <header className="flex items-center justify-between p-2 bg-white  ">
             {/* Logo */}
-            <div className="flex  justify-between items-center  ">
+            <div className="flex  justify-between items-center   ">
                 <Image
                     src="/logo.png"
-                    className="h-[65px] w-auto "
+                    className="h-[65px] w-auto  "
                     width={999}
                     height={999}
                     alt=""
                 />
-                <div className="flex flex-col justify-center items-center">
+                <div className="flex flex-col   justify-center items-center">
                     <span className="ml-1   text-orange-500  text-4xl tracking-wide font-semibold mx-2 ">
                         Exotic India
                     </span>

@@ -81,26 +81,23 @@ const Testimonials = () => {
                                         </div>
                                         <blockquote className="flex-1 mt-8">
                                             <p className="text-lg leading-relaxed text-gray-900 font-pj">
-                                                “You made it so simple. My new
-                                                site is so much faster and
-                                                easier to work with than my old
-                                                site. I just choose the page,
-                                                make the change.”
+                                                “Book received just now. Its
+                                                amazing”
                                             </p>
                                         </blockquote>
                                     </div>
-                                    <div className="flex items-center mt-8">
-                                        <img
+                                    <div className="flex items-center mt-5">
+                                        {/* <img
                                             className="flex-shrink-0 object-cover rounded-full w-11 h-11"
                                             src="https://cdn.rareblocks.xyz/collection/clarity/images/testimonial/4/avatar-male-1.png"
                                             alt=""
-                                        />
+                                        /> */}
                                         <div className="ml-4">
                                             <p className="text-base font-bold text-gray-900 font-pj">
                                                 Leslie Alexander
                                             </p>
                                             <p className="mt-0.5 text-sm font-pj text-gray-600">
-                                                Freelance React Developer
+                                                Delhi
                                             </p>
                                         </div>
                                     </div>
@@ -153,25 +150,23 @@ const Testimonials = () => {
                                         </div>
                                         <blockquote className="flex-1 mt-8">
                                             <p className="text-lg leading-relaxed text-gray-900 font-pj">
-                                                “Simply the best. Better than
-                                                all the rest. I’d recommend this
-                                                product to beginners and
-                                                advanced users.”
+                                                “Best services. 5/5 rating. I
+                                                loved buying bronze statues”
                                             </p>
                                         </blockquote>
                                     </div>
-                                    <div className="flex items-center mt-8">
-                                        <img
+                                    <div className="flex items-center mt-5">
+                                        {/* <img
                                             className="flex-shrink-0 object-cover rounded-full w-11 h-11"
-                                            src="https://cdn.rareblocks.xyz/collection/clarity/images/testimonial/4/avatar-male-2.png"
+                                            src="https://cdn.rareblocks.xyz/collection/clarity/images/testimonial/4/avatar-male-1.png"
                                             alt=""
-                                        />
+                                        /> */}
                                         <div className="ml-4">
                                             <p className="text-base font-bold text-gray-900 font-pj">
-                                                Jacob Jones
+                                                Monika
                                             </p>
                                             <p className="mt-0.5 text-sm font-pj text-gray-600">
-                                                Digital Marketer
+                                                Bangalore
                                             </p>
                                         </div>
                                     </div>
@@ -224,25 +219,24 @@ const Testimonials = () => {
                                         </div>
                                         <blockquote className="flex-1 mt-8">
                                             <p className="text-lg leading-relaxed text-gray-900 font-pj">
-                                                “I cannot believe that I have
-                                                got a brand new landing page
-                                                after getting Omega. It was
-                                                super easy to edit and publish.”
+                                                “The madhubani paintings are
+                                                exquisite and in budget. Nice
+                                                service”
                                             </p>
                                         </blockquote>
                                     </div>
-                                    <div className="flex items-center mt-8">
-                                        <img
+                                    <div className="flex items-center mt-5">
+                                        {/* <img
                                             className="flex-shrink-0 object-cover rounded-full w-11 h-11"
-                                            src="https://cdn.rareblocks.xyz/collection/clarity/images/testimonial/4/avatar-female.png"
+                                            src="https://cdn.rareblocks.xyz/collection/clarity/images/testimonial/4/avatar-male-1.png"
                                             alt=""
-                                        />
+                                        /> */}
                                         <div className="ml-4">
                                             <p className="text-base font-bold text-gray-900 font-pj">
-                                                Jenny Wilson
+                                                Rohan
                                             </p>
                                             <p className="mt-0.5 text-sm font-pj text-gray-600">
-                                                Graphic Designer
+                                                Siliguri
                                             </p>
                                         </div>
                                     </div>
