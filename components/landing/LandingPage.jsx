@@ -11,6 +11,7 @@ const Home = () => {
     return (
         <section className="relative w-full ">
             <Carousel />
+
             <ShopBySubjects />
 
             <Categories />

@@ -1,83 +1,123 @@
-import React from "react";
-import { MapPin } from "lucide-react";
+"use client";
+import React, { useState } from "react";
+import Image from "next/image";
+import { ChevronLeft, ChevronRight, MapPin } from "lucide-react";
 
 const productData = {
-    title: "Ten-Armed Goddess Durga Framed Tanjore Painting | 24 Karat Gold Work",
-    price: 29000,
-    discountPrice: 19000,
-    availibility: "In Stock",
+    title: "Bharatiya Darshan (Indian Philosophy)",
+    image: [
+        "/book-images/indian-philosophy/img0.webp",
+        "/book-images/indian-philosophy/img2.jpg",
+        "/book-images/indian-philosophy/img4.webp",
+        "/book-images/indian-philosophy/img5.jpg",
+        "/book-images/indian-philosophy/img7.webp",
+    ],
+    price: 1500,
+    discountPrice: 1000,
     shortDescription:
-        "This is a beautiful Tanjore painting of the ten-armed goddess Durga. The painting is made using 24 karat gold foil and is framed in a wooden frame.",
+        "Indian Philosophy is a comprehensive book that covers the various philosophies of India. The book is written in simple language and is easy to understand. The book is a must-have for all philosophy students and practitioners.",
     description:
-        "This is a beautiful Tanjore painting of the ten-armed goddess Durga. The painting is made using 24 karat gold foil and is framed in a wooden frame. The painting is made by skilled artisans in Tamil Nadu. The painting is a perfect addition to your home decor and can also be gifted to your loved ones.",
+        "This book is a comprehensive guide to the various philosophies of India. The book covers the various philosophies of India, including Hinduism, Buddhism, Jainism, and Sikhism. The book is written in simple language and is easy to understand. The book is a must-have for all philosophy students and practitioners.",
     productDetails: {
-        dimensions: "12 x 12 inches",
-        weight: "1 kg",
-        "Primary Material": "Wood, 24 Karat Gold",
-        color: "Multi-Color",
-        "Art Form": "Tanjore Painting",
-        "Frame Material": "Wood",
-        "Frame Color": "Brown",
-        shape: "Square",
-        finish: "Glossy",
-        "Package Content": "1 Tanjore Painting",
+        itemCode: "HBA647",
+        author: "Dr Govinda Parik",
+        publisher: "Dev Publishers And Distributors",
+        language: "English",
+        edition: "2025",
+        isbn: "9789359445892",
+        pages: "69",
+        cover: "Hardcover",
+        dimensions: "9 x 6 inches",
+        weight: "2.80 kg",
     },
 };
+
 const ProductDetails = () => {
+    const [currentIndex, setCurrentIndex] = useState(0);
+
+    const handleNext = () => {
+        setCurrentIndex((prevIndex) =>
+            prevIndex === productData.image.length - 1 ? 0 : prevIndex + 1
+        );
+    };
+
+    const handlePrev = () => {
+        setCurrentIndex((prevIndex) =>
+            prevIndex === 0 ? productData.image.length - 1 : prevIndex - 1
+        );
+    };
+
     return (
         <div className="bg-gray-100 ">
             <div className="  mx-auto px-4 py-8">
-                <div className="flex flex-wrap -mx-4">
+                <div className="grid grid-cols-3  ">
                     {/* Product Images */}
-                    <div className="w-full md:w-1/2 px-4 mb-8">
-                        <img
-                            src="https://images.unsplash.com/photo-1505740420928-5e560c06d30e?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w0NzEyNjZ8MHwxfHNlYXJjaHwxfHxoZWFkcGhvbmV8ZW58MHwwfHx8MTcyMTMwMzY5MHww&ixlib=rb-4.0.3&q=80&w=1080"
-                            alt="Product"
-                            className="w-full h-auto rounded-lg shadow-md mb-4"
-                            id="mainImage"
-                        />
-                        <div className="flex gap-4 py-4 justify-center overflow-x-auto">
-                            <img
-                                src="https://images.unsplash.com/photo-1505751171710-1f6d0ace5a85?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w0NzEyNjZ8MHwxfHNlYXJjaHwxMnx8aGVhZHBob25lfGVufDB8MHx8fDE3MjEzMDM2OTB8MA&ixlib=rb-4.0.3&q=80&w=1080"
-                                alt="Thumbnail 1"
-                                className="size-16 sm:size-20 object-cover rounded-md cursor-pointer opacity-60 hover:opacity-100 transition duration-300"
-                                onclick="changeImage(this.src)"
-                            />
-                            <img
-                                src="https://images.unsplash.com/photo-1484704849700-f032a568e944?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w0NzEyNjZ8MHwxfHNlYXJjaHw0fHxoZWFkcGhvbmV8ZW58MHwwfHx8MTcyMTMwMzY5MHww&ixlib=rb-4.0.3&q=80&w=1080"
-                                alt="Thumbnail 2"
-                                className="size-16 sm:size-20 object-cover rounded-md cursor-pointer opacity-60 hover:opacity-100 transition duration-300"
-                                onclick="changeImage(this.src)"
-                            />
-                            <img
-                                src="https://images.unsplash.com/photo-1496957961599-e35b69ef5d7c?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w0NzEyNjZ8MHwxfHNlYXJjaHw4fHxoZWFkcGhvbmV8ZW58MHwwfHx8MTcyMTMwMzY5MHww&ixlib=rb-4.0.3&q=80&w=1080"
-                                alt="Thumbnail 3"
-                                className="size-16 sm:size-20 object-cover rounded-md cursor-pointer opacity-60 hover:opacity-100 transition duration-300"
-                                onclick="changeImage(this.src)"
-                            />
-                            <img
-                                src="https://images.unsplash.com/photo-1528148343865-51218c4a13e6?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w0NzEyNjZ8MHwxfHNlYXJjaHwzfHxoZWFkcGhvbmV8ZW58MHwwfHx8MTcyMTMwMzY5MHww&ixlib=rb-4.0.3&q=80&w=1080"
-                                alt="Thumbnail 4"
-                                className="size-16 sm:size-20 object-cover rounded-md cursor-pointer opacity-60 hover:opacity-100 transition duration-300"
-                                onclick="changeImage(this.src)"
-                            />
+
+                    <div className="col-span-3 md:col-span-2">
+                        <div className="grid grid-cols-5 gap-4">
+                            {/* Thumbnails on the left */}
+                            <div className="col-span-1 justify-start items-center flex flex-col gap-4">
+                                {productData.image.map((image, index) => (
+                                    <Image
+                                        key={index}
+                                        src={image}
+                                        alt={`Thumbnail ${index + 1}`}
+                                        className={`w-20 h-20 object-cover rounded-md cursor-pointer opacity-60 hover:opacity-100 transition duration-300 ${
+                                            index === currentIndex
+                                                ? "opacity-100"
+                                                : ""
+                                        }`}
+                                        onClick={() => setCurrentIndex(index)}
+                                        width={80}
+                                        height={80}
+                                    />
+                                ))}
+                            </div>
+
+                            {/* Main Image with Carousel Arrows */}
+                            <div className="col-span-4 flex justify-center items-center relative">
+                                <img
+                                    src={productData.image[currentIndex]}
+                                    alt="Product"
+                                    className="w-auto h-[500px] rounded-lg shadow-md mb-4"
+                                />
+
+                                {/* Left Arrow */}
+                                <button
+                                    onClick={handlePrev}
+                                    className="absolute left-4 top-1/2 transform -translate-y-1/2 bg-white p-2 rounded-full shadow-md hover:bg-gray-200"
+                                >
+                                    <ChevronLeft size={24} />
+                                </button>
+
+                                {/* Right Arrow */}
+                                <button
+                                    onClick={handleNext}
+                                    className="absolute right-4 top-1/2 transform -translate-y-1/2 bg-white p-2 rounded-full shadow-md hover:bg-gray-200"
+                                >
+                                    <ChevronRight size={24} />
+                                </button>
+                            </div>
                         </div>
                     </div>
                     {/* Product Details */}
-                    <div className="w-full md:w-1/2 px-4">
+                    <div className="col-span-3 md:col-span-1   w-full   px-4">
                         <h2 className="text-3xl font-bold mb-2 tracking-wide text-gray-700">
                             {productData.title}
                         </h2>
-                        <p className="text-gray-600 text-[20px] mb-4">
-                            {productData.availibility}
-                        </p>
-                        <div className="mb-4 text-2xl ">
-                            <span className="text-green-700">MRP: </span>
-                            <span className="text-3xl font-bold mr-2">
-                                {productData.price}
+                        <p className="text-gray-600 text-[16px] mb-2  ">
+                            <span className="text-gray-800 font-semibold">
+                                By{" "}
                             </span>
-                            <span className=" line-through text-red-500">
-                                {productData.discountPrice}
+                            {productData.productDetails.author}
+                        </p>
+                        <div className="mb-4 text-2xl items-center flex">
+                            {/* <span className="text-green-700">$: </span> */}
+                            <span className="text-3xl font-bold mr-2">
+                                ${productData.price}
+                            </span>
+                            <span className=" line-through text-sm   text-red-500">
+                                ${productData.discountPrice}
                             </span>
                         </div>
 
@@ -85,25 +125,11 @@ const ProductDetails = () => {
                             {productData.shortDescription}
                         </p>
 
-                        <div className="mb-6 flex justify-left items-end gap-5">
+                        <div className="mb-2 flex justify-left items-end   gap-5">
                             <div>
-                                {" "}
-                                <label
-                                    htmlFor="quantity"
-                                    className="block text-sm font-medium text-gray-700 mb-1"
-                                >
-                                    Quantity:
-                                </label>
-                                <input
-                                    type="number"
-                                    id="quantity"
-                                    name="quantity"
-                                    min={1}
-                                    defaultValue={1}
-                                    className="w-12 text-center rounded-md border-gray-300  shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50"
-                                />
+                                <CounterInput />
                             </div>
-                            <button className="bg-indigo-600 flex gap-2 items-center text-white px-4 rounded-md hover:bg-indigo-700 focus:outline-none focus:ring-2 py-1 focus:ring-indigo-500 focus:ring-offset-2 text-[17px]">
+                            <button className="bg-indigo-600 flex gap-2 items-center text-white px-4 rounded-md hover:bg-indigo-700 focus:outline-none focus:ring-2 py-[0.4rem] focus:ring-indigo-500 focus:ring-offset-2 text-[17px]">
                                 <svg
                                     xmlns="http://www.w3.org/2000/svg"
                                     fill="none"
@@ -166,3 +192,51 @@ const ProductDetails = () => {
 };
 
 export default ProductDetails;
+
+const CounterInput = () => {
+    const [count, setCount] = useState(1);
+
+    const decrement = () => {
+        setCount((prevCount) => Math.max(prevCount - 1, 0)); // Prevent going below 0
+    };
+
+    const increment = () => {
+        setCount((prevCount) => prevCount + 1);
+    };
+
+    return (
+        <div className="custom-number-input h-10 w-32">
+            <div className="flex flex-row h-10 w-full rounded-lg relative bg-transparent mt-1">
+                <button
+                    type="button"
+                    onClick={decrement}
+                    className="bg-gray-300 text-gray-600 hover:text-gray-700 hover:bg-gray-400 h-full w-20 rounded-l cursor-pointer outline-none"
+                >
+                    <span className="m-auto text-2xl font-thin">−</span>
+                </button>
+                <input
+                    type="number"
+                    className="outline-none focus:outline-none text-center w-full bg-gray-300 font-semibold text-md hover:text-black focus:text-black md:text-base cursor-default flex items-center text-gray-700"
+                    name="custom-input-number"
+                    value={count}
+                    readOnly
+                />
+                <button
+                    type="button"
+                    onClick={increment}
+                    className="bg-gray-300 text-gray-600 hover:text-gray-700 hover:bg-gray-400 h-full w-20 rounded-r cursor-pointer"
+                >
+                    <span className="m-auto text-2xl font-thin">+</span>
+                </button>
+            </div>
+
+            <style jsx>{`
+                input[type="number"]::-webkit-inner-spin-button,
+                input[type="number"]::-webkit-outer-spin-button {
+                    -webkit-appearance: none;
+                    margin: 0;
+                }
+            `}</style>
+        </div>
+    );
+};
