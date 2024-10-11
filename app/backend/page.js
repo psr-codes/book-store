@@ -1,9 +1,9 @@
 "use client";
+import Dashboard from "@/components/backend/Dashboard";
 import Header from "@/components/backend/Header";
 import List from "@/components/backend/Index";
 import Sidebar from "@/components/backend/Sidebar";
 import React, { useState } from "react";
-
 
 const Index = () => {
   const [selectedSection, setSelectedSection] = useState("Dashboard");
@@ -33,13 +33,9 @@ const Index = () => {
 const SectionContent = ({ section }) => {
   switch (section) {
     case "Dashboard":
+      return <Dashboard />;
+    case "Upload":
       return <List />;
-    case "Calendar":
-      return (
-        <div className="text-3xl font-bold text-green-600">
-          This is your Calendar
-        </div>
-      );
     case "Profile":
       return (
         <div className="text-3xl font-bold text-purple-600">
@@ -52,26 +48,12 @@ const SectionContent = ({ section }) => {
           DragonFly Settings
         </div>
       );
-    case "Settings":
+    case "Contact Us":
       return (
         <div className="text-3xl font-bold text-red-600">System Settings</div>
       );
-    case "Chart":
-      return (
-        <div className="text-3xl font-bold text-blue-600">Chart Overview</div>
-      );
-    case "Authentication":
-      return (
-        <div className="text-3xl font-bold text-pink-600">
-          Authentication Settings
-        </div>
-      );
     default:
-      return (
-        <div className="text-3xl font-bold text-gray-600">
-          Select a section from the sidebar
-        </div>
-      );
+      return <Dashboard />;
   }
 };
 

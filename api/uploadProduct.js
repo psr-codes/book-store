@@ -63,7 +63,7 @@ export async function uploadProduct(
       return `${day}/${month}/${year}`;
     };
 
-    const productRef = doc(db, `${userData.userName}${userData.id}`, productId);
+    const productRef = doc(db, `allBooks`, productId);
 
     await setDoc(productRef, {
       imageUrls,

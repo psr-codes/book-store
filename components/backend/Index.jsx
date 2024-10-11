@@ -1,5 +1,6 @@
 "use client";
 
+import { uploadProduct } from "@/api/uploadProduct";
 import FixedFields from "@/components/backend/FixedFields";
 import UpdateImages from "@/components/backend/UpdateImages";
 import { db, storage } from "@/db/firebase";
@@ -7,6 +8,7 @@ import { useState } from "react";
 import { BarLoader } from "react-spinners";
 import { toast, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+
 const List = () => {
   const [product, setProduct] = useState({
     imageUrls: [],
@@ -79,17 +81,13 @@ const List = () => {
     if (!result.success) {
       console.error(result.message);
     }
-    setIsButtonDisabled(false);
+    setTimeout(() => {
+      window.location.reload();
+    }, 1000);
   };
 
   return (
     <div className="bg-white p-6 grid grid-cols-2 gap-4">
-      {/* {
-        <div className="text-center mt-4">
-          <BarLoader color="#36D7B7" />
-          Uploading...
-        </div>
-      } */}
       <div className="col-span-2">
         <UpdateImages images={images} setImages={setImages} />
         <div>
@@ -112,10 +110,10 @@ const List = () => {
         <button
           type="button"
           onClick={handleSubmit}
-          className={` bg-blue-500 w-full text-white p-2 mt-4 focus:outline-none hover:bg-blue-600 ${
+          className={`bg-blue-500 w-full text-white p-2 mt-4 focus:outline-none hover:bg-blue-600 ${
             isButtonDisabled ? "opacity-50 cursor-not-allowed" : ""
           }`}
-          disabled={isButtonDisabled}
+          // disabled={!isButtonDisabled}
         >
           {isButtonDisabled ? "Uploading..." : "Upload Product"}
         </button>
