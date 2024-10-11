@@ -2,7 +2,7 @@
 import React, { useEffect, useState } from "react";
 
 const FixedFields = ({ product, setProduct }) => {
-  const [AllCategories, setAllCategories] = useState([
+  const [AllCategories] = useState([
     "Buddhism",
     "Jainism",
     "Psychology",
@@ -24,16 +24,6 @@ const FixedFields = ({ product, setProduct }) => {
     "Religious",
     "Sanskrit",
   ]);
-  const [selectedCategory, setSelectedCategory] = useState("");
-
-  const handleSelect = (event) => {
-    const selectedValue = event.target.value;
-    setSelectedCategory(selectedValue);
-    setProduct((prevProduct) => ({
-      ...prevProduct,
-      category: selectedValue,
-    }));
-  };
 
   const handleChange = (field, value) => {
     setProduct((prevProduct) => ({
@@ -42,50 +32,52 @@ const FixedFields = ({ product, setProduct }) => {
     }));
   };
 
-
   return (
-    <div className="bg-white p-4 rounded-md shadow-md">
-      <div className="mb-4">
-        <label className="block text-gray-700 text-sm font-bold mb-2">
+    <>
+      <div>
+        <label className="block text-gray-700 text-sm font-semibold mb-1">
           Name:
         </label>
         <input
           type="text"
           value={product.name}
-          className="border border-gray-300 p-2 w-full rounded-md focus:outline-none focus:border-blue-500"
+          className="border border-gray-300 p-2 w-full focus:outline-none focus:border-blue-500"
           onChange={(e) => handleChange("name", e.target.value)}
         />
       </div>
 
-      <div className="mb-4">
-        <label className="block text-gray-700 text-sm font-bold mb-2">
-          Price:
+      <div>
+        <label className="block text-gray-700 text-sm font-semibold mb-1">
+          Price (₹):
         </label>
         <input
           type="number"
           value={product.price}
-          className="border border-gray-300 p-2 w-full rounded-md focus:outline-none focus:border-blue-500"
+          className="border border-gray-300 p-2 w-full  focus:outline-none focus:border-blue-500"
           onChange={(e) => handleChange("price", e.target.value)}
         />
       </div>
 
-      <div className="mb-4">
-        <label className="block text-gray-700 text-sm font-bold mb-2">
-          Strike Price:
+      <div>
+        <label className="block text-gray-700 text-sm font-semibold mb-1">
+          Strike Price (₹):
         </label>
         <input
           type="number"
           value={product.strikePrice}
-          className="border border-gray-300 p-2 w-full rounded-md focus:outline-none focus:border-blue-500"
+          className="border border-gray-300 p-2 w-full  focus:outline-none focus:border-blue-500"
           onChange={(e) => handleChange("strikePrice", e.target.value)}
         />
       </div>
 
-      <div className="relative w-full text-left mb-6">
+      <div>
+        <label className="block text-gray-700 text-sm font-semibold mb-1">
+          Category:
+        </label>
         <select
           value={product.category}
           onChange={(e) => handleChange("category", e.target.value)}
-          className="mt-1 block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
+          className="border border-gray-300 p-2 w-full  focus:outline-none focus:border-blue-500"
         >
           <option value="" disabled>
             Select a category
@@ -98,41 +90,173 @@ const FixedFields = ({ product, setProduct }) => {
         </select>
       </div>
 
-      <div className="mb-4">
-        <label className="flex items-center text-gray-700 text-sm font-bold mb-2">
-          <input
-            type="checkbox"
-            checked={product.availability}
-            className="form-checkbox mr-2 h-4 w-4 text-blue-500"
-            onChange={(e) => handleChange("availability", e.target.checked)}
-          />
+      <div className="flex items-center">
+        <input
+          type="checkbox"
+          checked={product.availability}
+          className="form-checkbox h-4 w-4 text-blue-500"
+          onChange={(e) => handleChange("availability", e.target.checked)}
+        />
+        <label className="ml-2 text-gray-700 text-sm font-semibold">
           Availability
         </label>
       </div>
 
-      <div className="mb-4">
-        <label className="block text-gray-700 text-sm font-bold mb-2">
+      <div>
+        <label className="block text-gray-700 text-sm font-semibold mb-1">
           Short Description:
         </label>
         <textarea
           value={product.shortDescription}
-          className="border border-gray-300 p-2 w-full rounded-md focus:outline-none focus:border-blue-500"
+          className="border border-gray-300 p-2 w-full  focus:outline-none focus:border-blue-500"
           onChange={(e) => handleChange("shortDescription", e.target.value)}
         />
       </div>
 
       <div>
-        <label className="block text-gray-700 text-sm font-bold mb-2">
+        <label className="block text-gray-700 text-sm font-semibold mb-1">
           Description:
         </label>
         <textarea
           value={product.description}
-          className="border border-gray-300 p-2 w-full rounded-md focus:outline-none focus:border-blue-500"
+          className="border border-gray-300 p-2 w-full  focus:outline-none focus:border-blue-500"
           onChange={(e) => handleChange("description", e.target.value)}
         />
       </div>
-    </div>
+
+      <div>
+        <label className="block text-gray-700 text-sm font-semibold mb-1">
+          Item Code:
+        </label>
+        <input
+          type="text"
+          value={product.ItemCode}
+          className="border border-gray-300 p-2 w-full  focus:outline-none focus:border-blue-500"
+          onChange={(e) => handleChange("ItemCode", e.target.value)}
+        />
+      </div>
+
+      <div>
+        <label className="block text-gray-700 text-sm font-semibold mb-1">
+          Author:
+        </label>
+        <input
+          type="text"
+          value={product.Author}
+          className="border border-gray-300 p-2 w-full  focus:outline-none focus:border-blue-500"
+          onChange={(e) => handleChange("Author", e.target.value)}
+        />
+      </div>
+
+      <div>
+        <label className="block text-gray-700 text-sm font-semibold mb-1">
+          Publisher:
+        </label>
+        <input
+          type="text"
+          value={product.Publisher}
+          className="border border-gray-300 p-2 w-full  focus:outline-none focus:border-blue-500"
+          onChange={(e) => handleChange("Publisher", e.target.value)}
+        />
+      </div>
+
+      <div>
+        <label className="block text-gray-700 text-sm font-semibold mb-1">
+          Language:
+        </label>
+        <input
+          type="text"
+          value={product.Language}
+          className="border border-gray-300 p-2 w-full  focus:outline-none focus:border-blue-500"
+          onChange={(e) => handleChange("Language", e.target.value)}
+        />
+      </div>
+
+      <div>
+        <label className="block text-gray-700 text-sm font-semibold mb-1">
+          Edition:
+        </label>
+        <input
+          type="text"
+          value={product.Edition}
+          className="border border-gray-300 p-2 w-full  focus:outline-none focus:border-blue-500"
+          onChange={(e) => handleChange("Edition", e.target.value)}
+        />
+      </div>
+
+      <div>
+        <label className="block text-gray-700 text-sm font-semibold mb-1">
+          ISBN:
+        </label>
+        <input
+          type="text"
+          value={product.ISBN}
+          className="border border-gray-300 p-2 w-full  focus:outline-none focus:border-blue-500"
+          onChange={(e) => handleChange("ISBN", e.target.value)}
+        />
+      </div>
+
+      <div>
+        <label className="block text-gray-700 text-sm font-semibold mb-1">
+          Pages:
+        </label>
+        <input
+          type="number"
+          value={product.Pages}
+          className="border border-gray-300 p-2 w-full  focus:outline-none focus:border-blue-500"
+          onChange={(e) => handleChange("Pages", e.target.value)}
+        />
+      </div>
+
+      <div>
+        <label className="block text-gray-700 text-sm font-semibold mb-1">
+          Cover:
+        </label>
+        <input
+          type="text"
+          value={product.Cover}
+          className="border border-gray-300 p-2 w-full  focus:outline-none focus:border-blue-500"
+          onChange={(e) => handleChange("Cover", e.target.value)}
+        />
+      </div>
+
+      <div>
+        <label className="block text-gray-700 text-sm font-semibold mb-1">
+          Other Details:
+        </label>
+        <input
+          type="text"
+          value={product.OtherDetails}
+          className="border border-gray-300 p-2 w-full  focus:outline-none focus:border-blue-500"
+          onChange={(e) => handleChange("OtherDetails", e.target.value)}
+        />
+      </div>
+
+      <div>
+        <label className="block text-gray-700 text-sm font-semibold mb-1">
+          Weight (gm):
+        </label>
+        <input
+          type="number"
+          value={product.Weight}
+          className="border border-gray-300 p-2 w-full  focus:outline-none focus:border-blue-500"
+          onChange={(e) => handleChange("Weight", e.target.value)}
+        />
+      </div>
+
+      <div>
+        <label className="block text-gray-700 text-sm font-semibold mb-1">
+          Shipping Details:
+        </label>
+        <textarea
+          value={product.shippingDetails}
+          className="border border-gray-300 p-2 w-full  focus:outline-none focus:border-blue-500"
+          onChange={(e) => handleChange("shippingDetails", e.target.value)}
+        />
+      </div>
+    </>
   );
 };
+
 
 export default FixedFields;

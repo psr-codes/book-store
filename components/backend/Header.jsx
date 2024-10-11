@@ -3,39 +3,11 @@ import Image from "next/image";
 import Link from "next/link";
 import React, { useEffect, useState } from "react";
 
-
 const Header = ({ photoUrl, isSidebarOpen, setIsSidebarOpen }) => {
   const [isProfileMenuOpen, setIsProfileMenuOpen] = useState(false);
 
   const [fetchedData, setFetchedData] = useState([]);
   const [data, setData] = useState([]);
-  const dispatch = useDispatch();
-  const usersData = useSelector((state) => state.currentUserData.data);
-  const status = useSelector((state) => state.currentUserData.status);
-  const error = useSelector((state) => state.currentUserData.error);
-
-  useEffect(() => {
-    const fetchData = async () => {
-      try {
-        // Only fetch data when the status is "idle"
-        if (status === "idle") {
-          dispatch(fetchCurrentUserData());
-        }
-      } catch (error) {
-        console.error("Error fetching data:", error.message);
-      }
-    };
-
-    fetchData();
-  }, [dispatch]);
-
-  useEffect(() => {
-    if (usersData) {
-      // Update fetchedData with usersData
-      setFetchedData(usersData);
-      // console.log("Fetched Data:", fetchedData);
-    }
-  }, [usersData, fetchedData]);
 
   const toggleProfileMenu = () => {
     setIsProfileMenuOpen(!isProfileMenuOpen);
@@ -46,14 +18,14 @@ const Header = ({ photoUrl, isSidebarOpen, setIsSidebarOpen }) => {
   };
 
   return (
-    <header className="bg-white fixed z-10 w-full container mx-auto py-4 shadow-md">
+    <header className="bg-white z-10 w-full container mx-auto py-4 shadow-md">
       <div className="container flex items-center justify-between h-full px-6 mx-auto  dark2text-purple-300 text-black">
-        <Link href={`/`} className="text-xl font-bold">
-          Phoenix
-        </Link>
+        <div className="text-xl font-bold">
+          {/* Adi Prabha */}
+        </div>
 
         {/* <!-- Search input --> */}
-        {/* <div className="flex justify-center flex-1 lg:mr-32 ">
+        <div className="flex justify-center flex-1 lg:mr-32 ">
           <div className="relative w-full max-w-xl text-gray-400 mr-6 focus-within:text-gray-500 h-12 p-1">
             <div className="absolute inset-y-0 flex items-center pl-2">
               <svg
@@ -76,7 +48,7 @@ const Header = ({ photoUrl, isSidebarOpen, setIsSidebarOpen }) => {
               aria-label="Search"
             />
           </div>
-        </div> */}
+        </div>
         <ul className="flex items-center flex-shrink-0 space-x-6">
           {/* <!-- Sidebar door --> */}
           <li className="flex">

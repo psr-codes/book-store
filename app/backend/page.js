@@ -1,116 +1,78 @@
 "use client";
+import Header from "@/components/backend/Header";
+import List from "@/components/backend/Index";
+import Sidebar from "@/components/backend/Sidebar";
+import React, { useState } from "react";
 
-import FixedFields from "@/components/backend/FixedFields";
-import UpdateImages from "@/components/backend/UpdateImages";
-import { db, storage } from "@/db/firebase";
-import { useState } from "react";
-import { BarLoader } from "react-spinners";
-import { toast, ToastContainer } from "react-toastify";
-import "react-toastify/dist/ReactToastify.css";
-const List = () => {
-   const [product, setProduct] = useState({
-     imageUrls: [],
-     name: "",
-     price: "",
-     strikePrice: "",
-     availability: false,
-     shortDescription: "",
-     description: "",
-     category: "",
-   });
-   const [tempFields, setTempFields] = useState({});
-   const [images, setImages] = useState([]);
-   const [isButtonDisabled, setIsButtonDisabled] = useState(false);
 
-   const getRandomId = () => Math.floor(1000 + Math.random() * 9000);
-
-   const showFieldEmptyToast = (fieldName) => {
-     toast.error(`Please fill in the ${fieldName} field.`);
-   };
-
-   const showSuccessToast = () => {
-     toast.success("Product uploaded successfully!");
-   };
-
-   const showErrorToast = (errorMessage) => {
-     toast.error(`Error: ${errorMessage}`);
-   };
-
-   const handleFileSelect = (event) => {
-     const files = Array.from(event.target.files);
-     const imageFiles = files.filter((file) => {
-       const extension = file.name.split(".").pop().toLowerCase();
-       return ["jpg", "jpeg", "png", "gif", "bmp"].includes(extension);
-     });
-     setImages((prevImages) => [...prevImages, ...imageFiles]);
-   };
-
-   const handleSubmit = async () => {
-     setIsButtonDisabled(true);
-     const result = await uploadProduct(
-       product,
-       images,
-       {
-         userName: "username",
-         id: "userId",
-         countryCurrency: "USD",
-         phoneNumber: "123456789",
-         email: "email@example.com",
-       },
-       tempFields,
-       db,
-       storage,
-       showFieldEmptyToast,
-       showSuccessToast,
-       showErrorToast,
-       getRandomId
-     );
-     if (!result.success) {
-       console.error(result.message);
-     }
-     setIsButtonDisabled(false);
-   };
+const Index = () => {
+  const [selectedSection, setSelectedSection] = useState("Dashboard");
 
   return (
-    <div className="w-ful">
-      {
-        <div className="text-center mt-4">
-          <BarLoader color="#36D7B7" />
-          Uploading...
-        </div>
-      }
-      <UpdateImages images={images} setImages={setImages} />
-      <div>
-        <h1 className="w-full font-bold text-black text-start my-4 text-2xl capitalize">
-          Add new images
-        </h1>
-        <input
-          type="file"
-          multiple
-          onChange={handleFileSelect}
-          className="w-full md:w-auto"
+    <div className="bg-gray-100">
+      <div className="flex h-screen overflow-hidden">
+        {/* Pass selectedSection to Sidebar */}
+        <Sidebar
+          setSelectedSection={setSelectedSection}
+          selectedSection={selectedSection}
         />
-      </div>
 
-      <div className="grid grid-cols-2 gap-4 justify-start">
-        <FixedFields product={product} setProduct={setProduct} />
-      </div>
-
-      <ToastContainer />
-      <div>
-        <button
-          type="button"
-          onClick={handleSubmit}
-          className={`bg-blue-500 w-full text-white p-2 rounded-md mt-4 focus:outline-none hover:bg-blue-600 ${
-            isButtonDisabled ? "opacity-50 cursor-not-allowed" : ""
-          }`}
-          disabled={isButtonDisabled}
-        >
-          {isButtonDisabled ? "Uploading..." : "Upload Product"}
-        </button>
+        <div className="relative flex flex-1 flex-col overflow-y-auto overflow-x-hidden">
+          <Header />
+          <main className="h-[900px] overflow-auto">
+            <div className="mx-auto ">
+              <SectionContent section={selectedSection} />
+            </div>
+          </main>
+        </div>
       </div>
     </div>
   );
 };
 
-export default List;
+const SectionContent = ({ section }) => {
+  switch (section) {
+    case "Dashboard":
+      return <List />;
+    case "Calendar":
+      return (
+        <div className="text-3xl font-bold text-green-600">
+          This is your Calendar
+        </div>
+      );
+    case "Profile":
+      return (
+        <div className="text-3xl font-bold text-purple-600">
+          User Profile Details
+        </div>
+      );
+    case "DragonFly":
+      return (
+        <div className="text-3xl font-bold text-yellow-600">
+          DragonFly Settings
+        </div>
+      );
+    case "Settings":
+      return (
+        <div className="text-3xl font-bold text-red-600">System Settings</div>
+      );
+    case "Chart":
+      return (
+        <div className="text-3xl font-bold text-blue-600">Chart Overview</div>
+      );
+    case "Authentication":
+      return (
+        <div className="text-3xl font-bold text-pink-600">
+          Authentication Settings
+        </div>
+      );
+    default:
+      return (
+        <div className="text-3xl font-bold text-gray-600">
+          Select a section from the sidebar
+        </div>
+      );
+  }
+};
+
+export default Index;

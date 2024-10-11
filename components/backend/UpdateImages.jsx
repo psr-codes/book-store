@@ -49,7 +49,7 @@ const DraggableImage = ({ img, index, onDelete }) => {
           ref={provided.innerRef}
           {...provided.draggableProps}
           {...provided.dragHandleProps}
-          className="relative bg-gray-200 flex justify-center items-center"
+          className="relative bg-gray-200 flex justify-center items-center "
         >
           <Image
             height={844}
