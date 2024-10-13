@@ -1,5 +1,5 @@
 "use client";
-import Dashboard from "@/components/backend/Dashboard";
+import Dashboard from "@/components/backend/Dashboard/Dashboard";
 import Header from "@/components/backend/Header";
 import List from "@/components/backend/Index";
 import Sidebar from "@/components/backend/Sidebar";

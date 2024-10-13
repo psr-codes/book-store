@@ -11,7 +11,6 @@ import "react-toastify/dist/ReactToastify.css";
 
 const List = () => {
   const [product, setProduct] = useState({
-    imageUrls: [],
     name: "",
     price: "",
     strikePrice: "",
@@ -31,7 +30,6 @@ const List = () => {
     Weight: "",
     shippingDetails: "",
   });
-  const [tempFields, setTempFields] = useState({});
   const [images, setImages] = useState([]);
   const [isButtonDisabled, setIsButtonDisabled] = useState(false);
 
@@ -63,14 +61,6 @@ const List = () => {
     const result = await uploadProduct(
       product,
       images,
-      {
-        userName: "username",
-        id: "userId",
-        countryCurrency: "USD",
-        phoneNumber: "123456789",
-        email: "email@example.com",
-      },
-      tempFields,
       db,
       storage,
       showFieldEmptyToast,

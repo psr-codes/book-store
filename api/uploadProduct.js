@@ -5,8 +5,6 @@ import { ref, uploadBytes, getDownloadURL } from "firebase/storage";
 export async function uploadProduct(
   product,
   images,
-  userData,
-  tempFields,
   db,
   storage,
   showFieldEmptyToast,
@@ -34,6 +32,10 @@ export async function uploadProduct(
     showFieldEmptyToast("Description");
     return { success: false, message: "Description is required" };
   }
+  if (product.category === "") {
+    showFieldEmptyToast("Category");
+    return { success: false, message: "Category is required" };
+  }
   if (images.length === 0) {
     showFieldEmptyToast("Images are required");
     return { success: false, message: "Images are required" };
@@ -41,14 +43,14 @@ export async function uploadProduct(
 
   try {
     const productId = product.name + getRandomId();
-    const userFolder = `${userData.userName}-${userData.id}`;
+    const categoryFolder = `${product.category}`;
     const productFolder = productId;
 
     const imageUrls = await Promise.all(
       images.map(async (image, index) => {
         const imageRef = ref(
           storage,
-          `${userFolder}/${productFolder}/image${index + 1}.jpg`
+          `${categoryFolder}/${productFolder}/image${index + 1}.jpg`
         );
         await uploadBytes(imageRef, image);
         return await getDownloadURL(imageRef);
@@ -63,25 +65,12 @@ export async function uploadProduct(
       return `${day}/${month}/${year}`;
     };
 
-    const productRef = doc(db, `allBooks`, productId);
+    const productRef = doc(db, product.category, productId);
 
     await setDoc(productRef, {
       imageUrls,
-      name: product.name,
-      price: product.price,
-      strikePrice: product.strikePrice,
-      currency: userData.countryCurrency,
-      availability: product.availability,
-      category: product.category || "none",
-      shortDescription: product.shortDescription,
-      description: product.description,
-      categoryFields: tempFields,
+      product,
       date: getCurrentDate(),
-      sales: 0,
-      businessContact: {
-        ph: userData.phoneNumber,
-        email: userData.email,
-      },
     });
 
     showSuccessToast();
