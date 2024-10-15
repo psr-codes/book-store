@@ -8,6 +8,8 @@ import { useState } from "react";
 // import { BarLoader } from "react-spinners";
 import { toast, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import Login from "./Login";
+import { useAuth } from "@/hooks/useAuth";
 
 const List = () => {
     const [product, setProduct] = useState({
@@ -77,8 +79,6 @@ const List = () => {
             }, 1000);
         }
     };
-
-    // api env
 
     return (
         <div className="bg-white p-6 grid grid-cols-2 gap-4">
