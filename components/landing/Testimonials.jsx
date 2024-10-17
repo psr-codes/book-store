@@ -84,7 +84,7 @@ const Testimonials = () => {
                                                 “When searching becomes easier
                                                 then everything is aligned. I am
                                                 happy to add myself in your
-                                                customer's list.”
+                                                customer&apos;s list.”
                                             </p>
                                         </blockquote>
                                     </div>
@@ -152,8 +152,8 @@ const Testimonials = () => {
                                         </div>
                                         <blockquote className="flex-1 mt-8">
                                             <p className="text-lg leading-relaxed text-gray-900 font-pj">
-                                                “I'm very happy that I came to
-                                                know about this website. The
+                                                “I&apos;m very happy that I came
+                                                to know about this website. The
                                                 experience while shopping was so
                                                 good and convenient. The payment
                                                 process was also done very
@@ -226,8 +226,8 @@ const Testimonials = () => {
                                         <blockquote className="flex-1 mt-8">
                                             <p className="text-lg leading-relaxed text-gray-900 font-pj">
                                                 “Books play a significant role
-                                                in our life, I'm glad that I
-                                                found my required books under
+                                                in our life, I&apos;m glad that
+                                                I found my required books under
                                                 one roof. Happy Reading !!”
                                             </p>
                                         </blockquote>

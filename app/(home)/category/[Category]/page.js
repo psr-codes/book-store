@@ -7,18 +7,15 @@ import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import Link from "next/link";
 
-const page = () => {
+const Page = () => {
     const { Category } = useParams();
     const [categoryData, setCategoryData] = useState([]);
     useEffect(() => {
         fetchOneCollection(Category).then((data) => {
-            /// temp
-            // repeat the items in data multiple times
-            // to make the carousel visible
-            const repeatedData = data.concat(data).concat(data).concat(data);
-            setCategoryData(repeatedData);
-            /// temp
-            // setCategoryData(data);
+            // const repeatedData = data.concat(data).concat(data).concat(data);
+            // setCategoryData(repeatedData);
+
+            setCategoryData(data);
             console.log("categoryData", data);
         });
     }, [Category]);
@@ -105,7 +102,7 @@ const page = () => {
     );
 };
 
-export default page;
+export default Page;
 
 export function SimpleSlider({ categoryData }) {
     const settings = {
