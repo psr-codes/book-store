@@ -1,12 +1,13 @@
 "use client";
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, use } from "react";
 import Image from "next/image";
 import { Check, ChevronLeft, ChevronRight, MapPin } from "lucide-react";
 import { useRouter } from "next/navigation";
-
+import { toast } from "react-toastify";
 import { fetchProductData } from "@/lib";
 import { fetchOneProduct } from "@/api/fetchOneProduct";
 import globalStore from "@/store/globalStore";
+import { useAuth } from "@/hooks/useAuth";
 
 const excluding_keys = [
     "id",
@@ -18,7 +19,16 @@ const excluding_keys = [
     "imageUrls",
 ];
 
+import { handleFirebaseCartUpdate } from "@/api/handleFirebaseCartUpdate";
+
 const ProductDetails = ({ id, category }) => {
+    const { user, loading } = useAuth();
+    useEffect(() => {
+        if (user) {
+            console.log("user", user);
+        }
+    }, [user]);
+
     const [currentIndex, setCurrentIndex] = useState(0);
 
     const [orderCount, setOrderCount] = useState(1);
@@ -50,6 +60,64 @@ const ProductDetails = ({ id, category }) => {
         };
         f();
     }, [id]);
+
+    // toast.show("Please login to add items to cart");
+
+    // const handleAddToCart = () => {
+    //     if (productData && isInCart(productData.id)) {
+    //         removeFromCart({ id: productData.id });
+    //     } else {
+    //         // remove previous item with same id
+    //         removeFromCart({ id: productData.id });
+    //         addToCart({
+    //             id: productData.id,
+    //             category: productData.product.category,
+    //             name: productData.product.name,
+    //             price: productData.product.price,
+    //             discountPrice: productData.product.strikePrice,
+    //             image: productData.imageUrls[0],
+    //             quantity: orderCount,
+    //         });
+    //     }
+    // };
+
+    const handleAddToCart = async () => {
+        if (!user || !user.email) {
+            toast.show("Please login to add items to cart");
+            return;
+        }
+        if (!productData) return;
+
+        const isItemInCart = isInCart(productData.id);
+
+        // Update local cart
+        if (isItemInCart) {
+            removeFromCart({ id: productData.id });
+        } else {
+            addToCart({
+                id: productData.id,
+                category: productData.product.category,
+                name: productData.product.name,
+                price: productData.product.price,
+                discountPrice: productData.product.strikePrice,
+                image: productData.imageUrls[0],
+                quantity: orderCount,
+            });
+        }
+        const email = user.email;
+        const res = await handleFirebaseCartUpdate(
+            email,
+            productData,
+            orderCount
+        );
+        console.log("res", res);
+
+        if (res.success) {
+            toast.success(res.message);
+        } else {
+            toast.error(res.message);
+        }
+    };
 
     if (!id || !productData) return null;
 
@@ -144,26 +212,7 @@ const ProductDetails = ({ id, category }) => {
                                         ? "bg-red-500 hover:bg-red-600"
                                         : "bg-indigo-600 hover:bg-indigo-700"
                                 }`}
-                                onClick={() => {
-                                    if (
-                                        productData &&
-                                        isInCart(productData.id)
-                                    ) {
-                                        removeFromCart({ id: productData.id });
-                                    } else {
-                                        // remove previous item with same id
-                                        removeFromCart({ id: productData.id });
-                                        addToCart({
-                                            id: productData.id,
-                                            name: productData.product.name,
-                                            price: productData.product.price,
-                                            discountPrice:
-                                                productData.product.strikePrice,
-                                            image: productData.imageUrls[0],
-                                            quantity: orderCount,
-                                        });
-                                    }
-                                }}
+                                onClick={handleAddToCart}
                             >
                                 <svg
                                     xmlns="http://www.w3.org/2000/svg"

@@ -3,9 +3,9 @@ import Slider from "react-slick";
 import Image from "next/image";
 
 const bannerImages = [
-    "/home-1.jpg",
     "/banner/banner1.webp",
     "/banner/banner2.webp",
+    "/home-1.jpg",
     "/banner/banner3.webp",
 ];
 const Carousel = () => {

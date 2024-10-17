@@ -2,7 +2,6 @@
 // app/product/[id]/page.js
 import { useParams, useSearchParams } from "next/navigation";
 import ProductDetails from "@/components/product/ProductDetails";
-
 const ProductPage = () => {
     // Retrieve the dynamic 'id' from the URL
     const { id } = useParams();

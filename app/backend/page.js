@@ -52,12 +52,7 @@ const SectionContent = ({ section }) => {
                     User Profile Details
                 </div>
             );
-        case "DragonFly":
-            return (
-                <div className="text-3xl font-bold text-yellow-600">
-                    DragonFly Settings
-                </div>
-            );
+
         case "Contact Us":
             return (
                 <div className="text-3xl font-bold text-red-600">

@@ -11,7 +11,7 @@ export const nav2 = [
     "Spirituality",
     "Alternative Medicine",
     "Art & Culture",
-    "Art and Architecture",
+    // "Art and Architecture",
     "History",
     "Ayurveda",
     "Philosophy",

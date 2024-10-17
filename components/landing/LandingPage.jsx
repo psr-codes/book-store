@@ -1,12 +1,10 @@
 "use client";
-import ShopBySubjects from "./ShopBySubject";
-import Categories from "./Categories";
 import ShopWithUs from "./ShopWithUs";
 import Tabs from "@/components/landing/Tabs";
 import Testimonials from "./Testimonials";
 import Carousel from "./Carousel";
 import React from "react";
-import BookCategories from "@/components/BookCategories";
+import BookCategories from "@/components/landing/BookCategories";
 const Home = () => {
     return (
         <section className="relative w-full ">
@@ -14,9 +12,6 @@ const Home = () => {
 
             <BookCategories />
 
-            {/* <ShopBySubjects />
-
-            <Categories /> */}
             <Tabs />
             <ShopWithUs />
             <Testimonials />

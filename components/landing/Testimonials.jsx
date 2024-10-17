@@ -81,8 +81,10 @@ const Testimonials = () => {
                                         </div>
                                         <blockquote className="flex-1 mt-8">
                                             <p className="text-lg leading-relaxed text-gray-900 font-pj">
-                                                “Book received just now. Its
-                                                amazing”
+                                                “When searching becomes easier
+                                                then everything is aligned. I am
+                                                happy to add myself in your
+                                                customer's list.”
                                             </p>
                                         </blockquote>
                                     </div>
@@ -94,7 +96,7 @@ const Testimonials = () => {
                                         /> */}
                                         <div className="ml-4">
                                             <p className="text-base font-bold text-gray-900 font-pj">
-                                                Leslie Alexander
+                                                Rahul
                                             </p>
                                             <p className="mt-0.5 text-sm font-pj text-gray-600">
                                                 Delhi
@@ -150,8 +152,12 @@ const Testimonials = () => {
                                         </div>
                                         <blockquote className="flex-1 mt-8">
                                             <p className="text-lg leading-relaxed text-gray-900 font-pj">
-                                                “Best services. 5/5 rating. I
-                                                loved buying bronze statues”
+                                                “I'm very happy that I came to
+                                                know about this website. The
+                                                experience while shopping was so
+                                                good and convenient. The payment
+                                                process was also done very
+                                                smoothly.”
                                             </p>
                                         </blockquote>
                                     </div>
@@ -219,9 +225,10 @@ const Testimonials = () => {
                                         </div>
                                         <blockquote className="flex-1 mt-8">
                                             <p className="text-lg leading-relaxed text-gray-900 font-pj">
-                                                “The madhubani paintings are
-                                                exquisite and in budget. Nice
-                                                service”
+                                                “Books play a significant role
+                                                in our life, I'm glad that I
+                                                found my required books under
+                                                one roof. Happy Reading !!”
                                             </p>
                                         </blockquote>
                                     </div>

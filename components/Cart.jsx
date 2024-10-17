@@ -94,10 +94,8 @@ const Checkout = () => {
             </div>
             <div className="grid sm:px-10 lg:grid-cols-2 lg:px-20 xl:px-32">
                 <div className="px-4 pt-8">
-                    <p className="text-xl font-medium">Order Summary</p>
-                    <p className="text-gray-400">
-                        Check your items. And select a suitable shipping method.
-                    </p>
+                    <p className=" font-medium">Order Summary</p>
+
                     <div className="relative flex flex-col rounded-lg  bg-gray-100 w-full   p-5">
                         {cartItems.map((item) => (
                             <div
@@ -105,12 +103,12 @@ const Checkout = () => {
                                 className="relative flex flex-col rounded-lg bg-white sm:flex-row border-b"
                             >
                                 <img
-                                    className="m-2 h-24 w-28 rounded-md border object-cover object-center"
+                                    className="m-2 h-24 max-w-28 rounded-md border object-cover object-center"
                                     src={item.image}
                                     alt={item.name}
                                 />
-                                <div className="flex w-full flex-col px-4 py-4">
-                                    <span className="font-semibold">
+                                <div className="flex w-full flex-col px-4 py-4 text-[1rem] ">
+                                    <span className="font-semibold line-clamp-2 leading-5 pr-5">
                                         {item.name}
                                     </span>
                                     <span className="text-gray-400">
@@ -133,9 +131,7 @@ const Checkout = () => {
                 </div>
                 <div className="mt-10 bg-gray-50 px-4 pt-8 lg:mt-0">
                     <p className="text-xl font-medium">Payment Details</p>
-                    <p className="text-gray-400">
-                        Complete your order by providing your payment details.
-                    </p>
+
                     <div className="">
                         <label
                             htmlFor="email"

@@ -26,10 +26,10 @@ const categories = [
         name: "Art & Culture",
         image: "/book-images/categories/art-culture.webp",
     },
-    {
-        name: "Art and Architecture",
-        image: "/book-images/categories/art-architecture.webp",
-    },
+    // {
+    //     name: "Art and Architecture",
+    //     image: "/book-images/categories/art-architecture.webp",
+    // },
     { name: "History", image: "/book-images/categories/history.webp" },
     { name: "Philosophy", image: "/book-images/categories/philosophy.webp" },
     { name: "Astrology", image: "/book-images/categories/astrology.webp" },
