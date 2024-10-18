@@ -8,6 +8,7 @@ import { auth } from "@/db/firebase";
 import { useAuth } from "@/hooks/useAuth";
 import { redirect, useRouter } from "next/navigation";
 import React, { useEffect, useState } from "react";
+import { adminEmail } from "@/data/siteData";
 
 const Index = () => {
     const [selectedSection, setSelectedSection] = useState("Dashboard");
@@ -18,6 +19,13 @@ const Index = () => {
         return <Login />;
     }
 
+    if (user && user?.email !== adminEmail) {
+        return (
+            <div>
+                <h1>Unauthorized</h1>
+            </div>
+        );
+    }
     return (
         <div className="bg-gray-100">
             <div className="flex h-screen overflow-hidden">

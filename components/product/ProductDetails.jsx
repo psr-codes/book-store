@@ -19,7 +19,7 @@ const excluding_keys = [
     "imageUrls",
 ];
 
-import { handleFirebaseCartUpdate } from "@/api/handleFirebaseCartUpdate";
+import { handleFirebaseCartUpdate } from "@/api/cart/handleFirebaseCartUpdate";
 
 const ProductDetails = ({ id, category }) => {
     const { user, loading } = useAuth();
@@ -52,6 +52,9 @@ const ProductDetails = ({ id, category }) => {
     };
 
     // const productData = fetchProductData(id);
+    useEffect(() => {
+        console.log("cart items changed", cartItems);
+    }, [cartItems]);
     useEffect(() => {
         const f = async () => {
             const productData = await fetchOneProduct(id, category);
@@ -127,10 +130,10 @@ const ProductDetails = ({ id, category }) => {
                 <div className="grid grid-cols-3 ">
                     {/* Product Images */}
 
-                    <div className="col-span-3 md:col-span-2">
-                        <div className="grid grid-cols-5 gap-4">
-                            {/* Thumbnails on the left */}
-                            <div className="col-span-1 justify-start items-center flex flex-col gap-4">
+                    <div className="col-span-3 md:col-span-2  ">
+                        <div className="grid grid-cols-5 gap-4 md:grid-cols-5 md:gap-4">
+                            {/* Thumbnails on the left for larger screens and at the bottom for smaller screens */}
+                            <div className="col-span-5 order-2 md:col-span-1 md:order-none justify-start items-center flex flex-row md:flex-col gap-4   p-2">
                                 {productData.imageUrls.map((image, index) => (
                                     <Image
                                         key={index}
@@ -149,11 +152,11 @@ const ProductDetails = ({ id, category }) => {
                             </div>
 
                             {/* Main Image with Carousel Arrows */}
-                            <div className="col-span-4 flex justify-center items-center relative">
+                            <div className="col-span-5 md:col-span-4 flex justify-center items-center relative order-1 md:order-none">
                                 <img
                                     src={productData.imageUrls[currentIndex]}
                                     alt="Product"
-                                    className="w-auto h-[500px] rounded-lg shadow-md mb-4"
+                                    className="w-auto h-[500px] rounded-lg  mb-4"
                                 />
 
                                 {/* Left Arrow */}
@@ -175,7 +178,7 @@ const ProductDetails = ({ id, category }) => {
                         </div>
                     </div>
                     {/* Product Details */}
-                    <div className="col-span-3 md:col-span-1   w-full   px-4">
+                    <div className="col-span-3 md:col-span-1   w-full  p-2">
                         <h2 className="text-3xl font-bold mb-2 tracking-wide text-gray-700">
                             {productData.product.name}
                         </h2>
@@ -183,7 +186,7 @@ const ProductDetails = ({ id, category }) => {
                             <span className="text-gray-800 font-semibold">
                                 By{" "}
                             </span>
-                            {productData.product.author}
+                            {productData.product.Author}
                         </p>
                         <div className="mb-4 text-2xl items-center flex">
                             {/* <span className="text-green-700">$: </span> */}
@@ -315,7 +318,7 @@ export default ProductDetails;
 
 const CounterInput = ({ orderCount, setOrderCount }) => {
     const decrement = () => {
-        setOrderCount((prevCount) => Math.max(prevCount - 1, 0)); // Prevent going below 0
+        setOrderCount((prevCount) => Math.max(prevCount - 1, 1)); // Prevent going below 1
     };
 
     const increment = () => {

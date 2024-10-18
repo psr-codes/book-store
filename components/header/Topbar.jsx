@@ -7,6 +7,8 @@ import React, { useState } from "react";
 import { useRouter } from "next/navigation";
 import { LogIn, LogOut, Logs, ShoppingBag, Search } from "lucide-react";
 import { useAuth } from "@/hooks/useAuth";
+import { adminEmail } from "@/data/siteData";
+
 const Topbar = () => {
     const { user, loading } = useAuth();
     const router = useRouter();
@@ -73,37 +75,62 @@ const Topbar = () => {
           <span className="text-[14px] md:text-[16px]">Wishlist</span>
         </div> */}
                 {user ? (
-                    <div className="flex px-2  md:justify-center space-x-3 md:space-x-6 text-gray-900">
-                        {" "}
-                        <Link
-                            href="/my-orders"
-                            className="flex flex-col md:flex-row items-center justify-center space-x-1"
-                        >
-                            <Logs className="text-gray-700" />
-                            <span className="text-[14px] md:text-[16px]">
-                                My Orders
-                            </span>
-                        </Link>
-                        <Link
-                            href="/Cart"
-                            className="flex flex-col md:flex-row items-center justify-center space-x-1"
-                        >
-                            <ShoppingBag className="text-gray-700" />
-                            <span className="text-[14px] md:text-[16px]">
-                                Cart
-                            </span>
-                        </Link>
-                        <p className="flex text-red-500 hover:text-red-700 flex-col md:flex-row items-center justify-center space-x-1 cursor-pointer">
-                            <span
-                                onClick={() => auth.signOut()}
-                                className="flex font-semibold"
+                    user.email === adminEmail ? (
+                        <div className="flex px-2  md:justify-center space-x-3 md:space-x-6 text-gray-900">
+                            <Link
+                                href="/backend"
+                                className="flex flex-col md:flex-row items-center justify-center space-x-1"
                             >
-                                {" "}
-                                <LogOut />
-                                <span>Logout</span>
-                            </span>
-                        </p>
-                    </div>
+                                <span className="text-[16px] md:text-[16px] font-semibold flex">
+                                    {" "}
+                                    <LogIn className=" " />
+                                    <span> Admin Panel</span>
+                                </span>
+                            </Link>
+                            <p className="flex text-red-500 hover:text-red-700 flex-col md:flex-row items-center justify-center space-x-1 cursor-pointer">
+                                <span
+                                    onClick={() => auth.signOut()}
+                                    className="flex font-semibold"
+                                >
+                                    {" "}
+                                    <LogOut />
+                                    <span>Logout</span>
+                                </span>
+                            </p>
+                        </div>
+                    ) : (
+                        <div className="flex px-2  md:justify-center space-x-3 md:space-x-6 text-gray-900">
+                            {" "}
+                            <Link
+                                href="/my-orders"
+                                className="flex flex-col md:flex-row items-center justify-center space-x-1"
+                            >
+                                <Logs className="text-gray-700" />
+                                <span className="text-[14px] md:text-[16px]">
+                                    My Orders
+                                </span>
+                            </Link>
+                            <Link
+                                href="/Cart"
+                                className="flex flex-col md:flex-row items-center justify-center space-x-1"
+                            >
+                                <ShoppingBag className="text-gray-700" />
+                                <span className="text-[14px] md:text-[16px]">
+                                    Cart
+                                </span>
+                            </Link>
+                            <p className="flex text-red-500 hover:text-red-700 flex-col md:flex-row items-center justify-center space-x-1 cursor-pointer">
+                                <span
+                                    onClick={() => auth.signOut()}
+                                    className="flex font-semibold"
+                                >
+                                    {" "}
+                                    <LogOut />
+                                    <span>Logout</span>
+                                </span>
+                            </p>
+                        </div>
+                    )
                 ) : (
                     <div className="w-full text-orange-500 hover:text-orange-600 ">
                         <Link

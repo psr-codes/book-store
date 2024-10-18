@@ -4,7 +4,7 @@ import localFont from "next/font/local";
 import LandingPage from "@/components/landing/LandingPage";
 import { ToastContainer } from "react-toastify";
 import { useEffect } from "react";
-import { getUserCart } from "@/api/getUserCart";
+import { getUserCart } from "@/api/cart/getUserCart";
 import { useAuth } from "@/hooks/useAuth";
 
 import Cart from "@/components/Cart";

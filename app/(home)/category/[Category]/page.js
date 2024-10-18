@@ -9,12 +9,13 @@ import Link from "next/link";
 
 const Page = () => {
     const { Category } = useParams();
+    const [decodedCategory, setDecodedCategory] = useState("");
     const [categoryData, setCategoryData] = useState([]);
     useEffect(() => {
-        fetchOneCollection(Category).then((data) => {
-            // const repeatedData = data.concat(data).concat(data).concat(data);
-            // setCategoryData(repeatedData);
+        const decoded_category = decodeURIComponent(Category);
+        setDecodedCategory(decoded_category);
 
+        fetchOneCollection(decoded_category).then((data) => {
             setCategoryData(data);
             console.log("categoryData", data);
         });
@@ -35,7 +36,7 @@ const Page = () => {
                         </a>
                     </div>
                     <h1 className="md:text-2xl font-semibold text-gray-800 mt-3">
-                        Books on {Category}
+                        Books on {decodedCategory}
                     </h1>
                 </div>
 
@@ -70,7 +71,7 @@ const Page = () => {
                                 {" "}
                                 {/* Adjusted the width to create a portrait layout */}
                                 <Link
-                                    href={`/product/${item.id}?collection=${item.category}`}
+                                    href={`/product/${item.id}?collection=${item.product.category}`}
                                 >
                                     {item && item.imageUrls.length > 0 && (
                                         <img
