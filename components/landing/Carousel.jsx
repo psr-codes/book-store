@@ -10,8 +10,8 @@ const bannerImages = [
 ];
 const Carousel = () => {
     return (
-        <section className="grid grid-cols-6 w-full  bg-white py-10   ">
-            <div className="  col-span-6 md:col-span-4 pl-16 w-full  mx-auto ">
+        <section className="grid grid-cols-6 w-full  bg-white py-10  mx:px-10  ">
+            <div className="  col-span-6 md:col-span-4   w-full  mx-auto ">
                 <LazyLoad />
             </div>
             <div className="  flex w-full   flex-col justify-start items-center col-span-6 md:col-span-2">
