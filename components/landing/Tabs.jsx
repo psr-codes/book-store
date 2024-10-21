@@ -14,11 +14,11 @@ const CuratedItems = () => {
         allCollectionDataStore();
 
     const [tabData, setTabData] = useState({
-        newArrivals: [],
-        recentlySold: [],
-        bestSellers: [],
-        trending: [],
-        editorsPicks: [],
+        Religious: [],
+        Spirituality: [],
+        Purana: [],
+        Ayurveda: [],
+        "Art & Culture": [],
     });
 
     useEffect(() => {
@@ -32,17 +32,17 @@ const CuratedItems = () => {
                 setAllCollectionsData(allData);
 
                 const temp_tabData = {
-                    newArrivals: [],
-                    recentlySold: [],
-                    bestSellers: [],
-                    trending: [],
-                    editorsPicks: [],
+                    Religious: [],
+                    Spirituality: [],
+                    Purana: [],
+                    Ayurveda: [],
+                    "Art & Culture": [],
                 };
-                temp_tabData.newArrivals = allData["Purana"] || [];
-                temp_tabData.recentlySold = allData["History"] || [];
-                temp_tabData.bestSellers = allData["Religious"] || [];
-                temp_tabData.trending = allData["Purana"] || [];
-                temp_tabData.editorsPicks = allData["History"] || [];
+                temp_tabData.Religious = allData["Religious"] || [];
+                temp_tabData.Spirituality = allData["Spirituality"] || [];
+                temp_tabData.Purana = allData["Purana"] || [];
+                temp_tabData.Ayurveda = allData["Ayurveda"] || [];
+                temp_tabData["Art & Culture"] = allData["Art & Culture"] || [];
 
                 setTabData(temp_tabData);
                 console.log("tabData", tabData);
@@ -55,13 +55,13 @@ const CuratedItems = () => {
         fetchData();
     }, []);
 
-    const [activeTab, setActiveTab] = useState("newArrivals");
+    const [activeTab, setActiveTab] = useState("Religious");
     const tabs = [
-        { id: "newArrivals", label: "New Arrivals" },
-        { id: "recentlySold", label: "Recently Sold" },
-        { id: "bestSellers", label: "Best Sellers" },
-        { id: "trending", label: "Trending" },
-        { id: "editorsPicks", label: "Editor's Picks" },
+        { id: "Religious", label: "Religious" },
+        { id: "Spirituality", label: "Spirituality " },
+        { id: "Purana", label: "Purana" },
+        { id: "Ayurveda", label: "Ayurveda" },
+        { id: "Art & Culture", label: "Art & Culture" },
     ];
 
     return (
@@ -110,7 +110,7 @@ export function SimpleSlider({ tabData, activeTab }) {
         dots: true,
         infinite: false,
         speed: 500,
-        slidesToShow: 1,
+        slidesToShow: 3,
         slidesToScroll: 1,
         nextArrow: <SampleNextArrow className="text-black" />,
         prevArrow: <SamplePrevArrow className="rounded-full" />,
@@ -134,24 +134,25 @@ export function SimpleSlider({ tabData, activeTab }) {
         <Slider {...settings}>
             {tabData[activeTab].length > 0 &&
                 tabData[activeTab]?.map((item, index) => (
-                    <div key={index} className="carousel-item    mt-5  ">
-                        <div className="bg-white rounded-lg   p-4 w-[21rem] mx-auto border border-red-500  ">
-                            {" "}
+                    <div key={index} className="carousel-item mt-5">
+                        <div className="bg-white rounded-lg p-4 w-[21rem] mx-auto border border-red-500">
                             {/* Adjusted the width to create a portrait layout */}
                             <Link
                                 href={`/product/${item.id}?collection=${item.category}`}
                             >
                                 {item && item.imageUrls.length > 0 && (
-                                    <img
-                                        src={item?.imageUrls[0]}
-                                        alt={item?.imageUrls[0]}
-                                        className="w-full h-auto object-cover rounded-md mb-4"
-                                    />
+                                    <div className="w-full h-[300px] mb-4">
+                                        <img
+                                            src={item?.imageUrls[0]}
+                                            alt={item?.imageUrls[0]}
+                                            className="w-full h-full object-cover rounded-md"
+                                        />
+                                    </div>
                                 )}
-                                <h3 className="text-[1rem] leading-5 font-semibold ">
+                                <h3 className="text-[1rem] leading-5 font-semibold">
                                     {item.product.name}
                                 </h3>
-                                <p className="text-sm mt-2 ">
+                                <p className="text-sm mt-2">
                                     MRP:{" "}
                                     <span className="font-medium mx-2">
                                         Rs.{item.product.price}

@@ -51,10 +51,21 @@ const List = () => {
 
     const handleFileSelect = (event) => {
         const files = Array.from(event.target.files);
+
         const imageFiles = files.filter((file) => {
             const extension = file.name.split(".").pop().toLowerCase();
-            return ["jpg", "jpeg", "png", "gif", "bmp"].includes(extension);
+            return [
+                "jpg",
+                "jpeg",
+                "png",
+                "gif",
+                "bmp", // Common formats
+                "svg", // SVG (for vector images)
+                "webp", // WebP (modern image format)
+                "heic", // HEIC (used in iOS devices)
+            ].includes(extension);
         });
+
         setImages((prevImages) => [...prevImages, ...imageFiles]);
     };
 
